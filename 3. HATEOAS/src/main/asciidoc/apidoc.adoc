@@ -1,0 +1,75 @@
+= Описание API по статусам заказа клиента
+
+== Методы
+
+|===
+|Метод | Назначение
+|`PUT`
+|Обновить сущность или ее состояние
+|===
+
+=== Подтверждение аккаунта клиента
+
+Можно подтвердить аккаунт покупателя, сменив статус на *CONFIRMED*
+
+.request
+
+include::{snippets}\confirm_buyer\http-request.adoc[]
+
+.response
+
+include::{snippets}\confirm_buyer\http-response.adoc[]
+
+.response-fields
+
+include::{snippets}\confirm_buyer\response-fields.adoc[]
+
+=== Смена статуса заказа клиента
+
+==== Доставка
+
+Как только заказ собран, можно сменить статус заказа с *PROCESSING* на *DELIVERY*
+
+.request
+
+include::{snippets}\delivery_order\http-request.adoc[]
+
+.response   
+
+include::{snippets}\delivery_order\http-response.adoc[]
+
+.response-fields
+
+include::{snippets}\delivery_order\response-fields.adoc[]
+
+==== На почте
+
+Как только заказ доставили на почту, можно сменить статус заказа с *DELIVERY* на *AT_THE_POST_OFFICE*
+
+.request
+
+include::{snippets}\at_the_post_office_order\http-request.adoc[]
+
+.response
+
+include::{snippets}\at_the_post_office_order\http-response.adoc[]
+
+.response-fields
+
+include::{snippets}\at_the_post_office_order\response-fields.adoc[]
+
+==== Получен заказчиком
+
+Как только заказ был получен покупателем, можно сменить статус заказа с *AT_THE_POST_OFFICE* на *RECEIVED*
+
+.request
+
+include::{snippets}\received_order\http-request.adoc[]
+
+.response
+
+include::{snippets}\received_order\http-response.adoc[]
+
+.response-fields
+
+include::{snippets}\received_order\response-fields.adoc[]

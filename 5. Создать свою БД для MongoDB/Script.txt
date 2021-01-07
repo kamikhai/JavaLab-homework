@@ -1,0 +1,107 @@
+db.buyer.insert({
+    email: 'kamilla.hairul@gmail.com',
+    name: 'Kamilla',
+    surname: 'Khairullina',
+    passsword: 'qwerty007'
+});
+db.buyer.insert({
+    email: '123@gmail.com',
+    name: 'Petya',
+    surname: 'Petrov',
+    passsword: 'qwerty007'
+});
+db.accountState.insert({
+   name: 'confirmed'
+});
+db.accountState.insert({
+    name: 'not_confirmed'
+});
+
+db.buyer.update({_id: ObjectId('5fc3d06af1c84d65d7077199')},{
+    $set: {
+        state: ObjectId('5fc3d09af1c84d65d707719b')
+    }
+});
+
+db.buyer.update({_id: ObjectId('5fc3d14cf1c84d65d707719f')},{
+    $set: {
+        state: ObjectId('5fc3d09af1c84d65d707719a')
+    }
+});
+
+db.orderState.insert({
+    name: 'processing'
+});
+db.orderState.insert({
+    name: 'delivery'
+});
+db.orderState.insert({
+    name: 'at_the_post_office'
+});
+db.orderState.insert({
+    name: 'received'
+});
+
+db.city.insert({
+    name: 'Kazan'
+});
+db.city.insert({
+    name: 'Moscow'
+});
+
+db.shop.insert({
+    name: 'Shop1'
+});
+db.shop.insert({
+    name: 'Shop2'
+});
+
+db.shop.update({_id: ObjectId('5fc3d245f1c84d65d70771a6')},{
+    $set: {
+        city: ObjectId('5fc3d1f9f1c84d65d70771a4')
+    }
+});
+db.shop.update({_id: ObjectId('5fc3d245f1c84d65d70771a7')},{
+    $set: {
+        city: ObjectId('5fc3d1f9f1c84d65d70771a5')
+    }
+});
+
+db.goods.insert({
+    name: 'Dress',
+    shop: ObjectId('5fc3d245f1c84d65d70771a6'),
+    cost: 1200
+});
+db.goods.insert({
+    name: 'Shoes',
+    shop: ObjectId('5fc3d245f1c84d65d70771a6'),
+    cost: 1500
+});
+db.goods.insert({
+    name: 'Jacket',
+    shop: ObjectId('5fc3d245f1c84d65d70771a7'),
+    cost: 1700
+});
+
+db.faq.insert({
+    buyer: ObjectId('5fc3d06af1c84d65d7077199'),
+    question: 'Can you help me?',
+    answer: 'How can I help you?'
+});
+
+db.coupon.insert({
+    buyer: ObjectId('5fc3d06af1c84d65d7077199'),
+    shop: ObjectId('5fc3d245f1c84d65d70771a6'),
+    discountPercentage: 20
+});
+
+db.buyerOrder.insert({
+    name: ObjectId('5fc3d06af1c84d65d7077199'),
+    shop: ObjectId('5fc3d245f1c84d65d70771a6'),
+    goods: [ObjectId('5fc3d2fdf1c84d65d70771ab'), ObjectId('5fc3d40ff1c84d65d70771af')],
+    state: ObjectId('5fc3d1c0f1c84d65d70771a1')
+});
+
+db.goods.find({$or: [ {name: 'Jacket'}, {cost: {$lt: 1300}}]});
+
+db.buyer.find({_id:ObjectId('5fc3d06af1c84d65d7077199')})
